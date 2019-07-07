@@ -80,11 +80,40 @@ int main(){
     ios_base::sync_with_stdio(false); //makes cin cout faster
     cin.tie(NULL);    
     int t;
-    si(t);
+    fastRead_int(t);
     fori(i,0,t){
-        
-           
+        int n;
+        scanf("%d\n", &n);
+        //cout<<"n====="<<n<<endl;
+        map<string,int> dict;
+        fori(j,0,n){
+            string s;
+            // cin.ignore();
+            getline(cin,s);
+            map<string,int>::iterator itr=dict.find(s);
+            if(itr!=dict.end()){
+                itr->second++;
+            }
+            else{
+                dict.insert(pair<string,int> (s,1));
+            }
 
+            
+        }
+       
+        // getline(cin,space);
+        map<string,int>::iterator itr;
+       // map<string,int>::iterator temp;
+       
+        for(itr=dict.begin();itr!=dict.end();++itr){
+           
+               cout << itr->first << itr->second<<"\n";
+           
+            
+        }
+        
+       
+        if(i<t-1)cout << '\n';
     }
 
     return 0;
