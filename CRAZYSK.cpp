@@ -14,6 +14,8 @@
 #include<unordered_set>
 #include<unordered_map>
 #include<stack>
+#include<queue>
+#include<algorithm>
 
 using namespace std;
 typedef long long ll;
@@ -80,40 +82,12 @@ int main(){
     ios_base::sync_with_stdio(false); //makes cin cout faster
     cin.tie(NULL);    
     int t;
-   	cin >>t;
+    si(t);
     fori(i,0,t){
-        int n;
-        cin >>n;
-        cin.ignore();
-        map<string,int> dict;
-        fori(j,0,n){
-            string s;
-            // cin.ignore();
-            getline(cin,s);
-            map<string,int>::iterator itr=dict.find(s);
-            if(itr!=dict.end()){
-                itr->second=itr->second+1;
-            }
-            else{
-                dict.insert(pair<string,int> (s,1));
-            }
+        unsigned long long x,n;
+        unsigned long long 
+           
 
-            
-        }
-       
-        // getline(cin,space);
-        map<string,int>::iterator itr;
-       // map<string,int>::iterator temp;
-       
-        for(itr=dict.begin();itr!=dict.end();++itr){
-           
-               cout << itr->first << itr->second<<"\n";
-           
-            
-        }
-        
-       
-        if(i<t-1)cout << '\n';
     }
 
     return 0;

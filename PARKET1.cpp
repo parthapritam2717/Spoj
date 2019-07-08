@@ -14,6 +14,8 @@
 #include<unordered_set>
 #include<unordered_map>
 #include<stack>
+#include<queue>
+#include<algorithm>
 
 using namespace std;
 typedef long long ll;
@@ -77,44 +79,15 @@ inline void fastRead_int(int &x) {
 }
 //to read strings with whitespace string s,getline(cin,s);
 int main(){
-    ios_base::sync_with_stdio(false); //makes cin cout faster
-    cin.tie(NULL);    
-    int t;
-   	cin >>t;
-    fori(i,0,t){
-        int n;
-        cin >>n;
-        cin.ignore();
-        map<string,int> dict;
-        fori(j,0,n){
-            string s;
-            // cin.ignore();
-            getline(cin,s);
-            map<string,int>::iterator itr=dict.find(s);
-            if(itr!=dict.end()){
-                itr->second=itr->second+1;
-            }
-            else{
-                dict.insert(pair<string,int> (s,1));
-            }
-
-            
-        }
-       
-        // getline(cin,space);
-        map<string,int>::iterator itr;
-       // map<string,int>::iterator temp;
-       
-        for(itr=dict.begin();itr!=dict.end();++itr){
-           
-               cout << itr->first << itr->second<<"\n";
-           
-            
-        }
-        
-       
-        if(i<t-1)cout << '\n';
-    }
+    ll R,B;
+    cin>>R>>B;
+    ll a=1;
+    ll b=(R+4)/2;
+    b=b*-1;
+    ll c=R+B;
+    ll res1=((b*-1) +(sqrt((b*b)-4*c)))/2;
+    ll res2=((b*-1) -(sqrt((b*b)-4*c)))/2;
+    cout<<res1<<" "<<res2<<endl;
 
     return 0;
 
