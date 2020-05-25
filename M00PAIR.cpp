@@ -15,7 +15,7 @@
 #include<unordered_map>
 #include<stack>
 #include<queue>
-#include<deque>
+#include<algorithm>
 
 using namespace std;
 typedef long long ll;
@@ -57,23 +57,50 @@ typedef multimap<long long,long long> mmap;
 #define debugl(i,st,arr) forl(i,0,st){cout<<arr[i]<<" ";}cout<<endl;
 #define forci(i,sw) for((i)=(sw).begin();(i)!=(sw).end();++(i))
 #define forcr(i,sw) for((i)=(sw).rbegin();(i)!=(sw).rend();++(i))
+//Usefull for codeforces and spoj for faster integer input reading
+inline void fastRead_int(int &x) {
+    register int c = getchar_unlocked();
+    x = 0;
+    int neg = 0;
+
+    for(; ((c<48 || c>57) && c != '-'); c = getchar_unlocked());
+
+    if(c=='-') {
+    	neg = 1;
+    	c = getchar_unlocked();
+    }
+
+    for(; c>47 && c<58 ; c = getchar_unlocked()) {
+    	x = (x<<1) + (x<<3) + c - 48;
+    }
+
+    if(neg)
+    	x = -x;
+}
+//to read strings with whitespace string s,getline(cin,s);
 int main(){
-
-            int n;
-            si(n);
-            fori(j,0,n){
-                    int tem;
-                    si(tem);
-                    ll sum=0;
-                    while(tem>0){
-                        sum+=tem/5;
-                        tem=tem/5;
-                    }
-                    cout<<sum<<endl;
-
-            }
-
-
+    ios_base::sync_with_stdio(false); //makes cin cout faster
+    cin.tie(NULL);    
+    int n;
+    vector<unsigned long long> dp(2000);
+    fori(i,0,1005){
+        dp[i]=0;
+    }
+    dp[2]=1;
+    dp[3]=1;
+    dp[4]=3;
+    dp[5]=5;
+    unsigned long long  sum=5;
+    for(int i=6;i<=100;++i){
+        dp[i]=dp[i-1]+sum;
+        if(i%2==0){
+            dp[i]++;;
+        }
+        sum=sum+dp[i-1];
+    }
+    for(int i=0;i<=100;++i){
+        cout<<dp[i]<<endl;
+    }
     return 0;
 
 }
